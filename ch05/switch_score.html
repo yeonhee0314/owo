@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>switch</title>
+    </head>
+    <body>
+        <input id="input_number" type="text" />
+        <button id="btn" type="button">확인</button>
+        <div id="print"></div>
+    </body>
+</html>
+<script>
+    
+    document.getElementById("btn").onclick = function () {
+        
+        let score = document.getElementById("input_number").value;
+        let result = null;
+
+        if (score > 100 || score < 0) {
+            result = "유효하지 않는 값입니다.";
+        } else {
+
+        switch (Math.floor(score/10)) {
+            case 10:
+            case 9:
+                result = "A";
+                break;
+            case 8:
+                result = "B";
+                break;
+            case 7:
+                result = "C";
+                break;
+            case 6:
+                result = "D";
+                break;
+            default:
+                result = "F";
+                break;
+            }
+        }
+        document.getElementById("print").textContent = result;
+    };
+</script>
