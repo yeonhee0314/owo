@@ -11,14 +11,19 @@
     <script>
         const firstClick = function () {
             alert("first");
-        }
+        };
         const secondClick = function () {
             alert("second");
-        }
+        };
+
+        // onclick은 click 이벤트가 발생할 때 기본으로 실행되는 이벤트 리스너
+        // 이벤트 리스너는 콜백 함수의 일종
+        // document.getElementById("btn").addEventListener("click", firstClick);
+
         //firstClick과 secondClick은
         // click 이벤트 발생 시 호출되는 콜백함수다.
-        document.getElementById("btn").addEventListener("click", firstClick)
+        document.getElementById("btn").addEventListener("click", firstClick);
         // document.getElementById("btn").removeEventListener("click", firstClick)
-        document.getElementById("btn").addEventListener("click", secondClick)
+        document.getElementById("btn").addEventListener("click", secondClick);
     </script>
 </html>
