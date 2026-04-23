@@ -1,0 +1,15 @@
+
+const orderCoffee = function (num) {
+    console.log(`${num} 번째 주문`);
+    const makeCoffee = function () {
+    console.log(`${num}커피가 완성되었습니다.`);
+};
+    setTimeout(makeCoffee, 5000);
+};
+
+// 커피를 주문하면 5초 뒤에 나온다
+
+
+for (let i = 1; i <= 30; i++) {
+    orderCoffee(i);
+}
