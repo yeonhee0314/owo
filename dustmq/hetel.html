@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>호텔 체크인 관리</title>
+        <style>
+            @font-face {
+                font-family: 'ElegantSerif';
+                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2604-1@1.0/GraceSerif-Bold.woff2') format('woff2');
+                font-weight: 700;
+                font-display: swap;
+            }
+            
+            @font-face {
+                font-family: 'IAmAPlayer';
+                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/IAMAPLAYER.woff2') format('woff2');
+                font-weight: normal;
+                font-display: swap;
+            }
+
+            body {
+                font-family: 'ElegantSerif', 'IAmAPlayer';
+                background-color: rgb(27, 27, 27);
+                color: rgb(254, 216, 0);
+            }
+
+            h1 {
+                color: rgb(255, 0, 0);
+            }
+
+            p {
+                font-size: 18px;
+            }
+
+            .wrap{
+                background-color: rgba(255, 255, 255, 0.3);
+                background-color: 10px;
+                padding: 20px;
+                margin: 20px auto 0;
+                width: 50%;
+                border-radius: 10px;
+            }
+            
+            img {
+                width: 100%;
+                border-radius: 10px;
+            }
+
+            .checkin_wrap {
+                background-color: rgba(70, 5, 5, 0.76);
+                padding: 15px;
+                margin: 15px 0;
+                border-radius: 10px;
+            }
+
+            .checkin_wrap h2,
+            .room_wrap h2 {
+                margin-top: 5px;
+            }
+
+            .room_wrap {
+                background-color: rgba(22, 4, 4, 0.76);
+                padding: 15px;
+                margin: 15px 0;
+                border-radius: 10px;
+            }
+
+            .room_wrap p {
+                margin-bottom: 5px;
+            }
+
+            input {
+                width: 70%;
+                padding: 12px;
+                border: none;
+                border-radius: 10px;
+                outline: none;
+                font-size: 16px;
+            }
+
+            button {
+                padding: 12px 18px;
+                border: none;
+                border-radius: 10px;
+                background-color: burlywood;
+                color: black;
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            button:hover {
+                background-color: rgb(246, 219, 184);
+            }
+
+            ul {
+                padding-left: 20px;
+            }
+
+            li {
+                margin: 10px 0;
+                padding: 10px;
+                background-color: rgba(255, 255, 255, 0.2);
+                border-radius: 5px;
+            }
+
+            #room_cnt {
+                font-size: 30px;
+                color: #fffbc2;
+                font-weight: 700;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <h1>Beat drop, head nod, act like a rockstar 호텔 체크인 관리</h1>
+            <p>Beat drop, head nod, act like a rockstar 호텔의 체크인/체크아웃을 관리하는 웹 페이지입니다.</p>
+            <img src="./ㄱㅌㅎㅌ.avif" alt="호텔 이미지입니다."/>
+            <div class="checkin_wrap">
+                <h2>체크인 목록</h2>
+                <ul id="checkin_list">
+                    <li>득범</li>
+                    <li>동우</li>
+                    <li>은혁</li>
+                </ul>
+            </div>
+            <div class="checkin_wrap">
+                <h2>체크인</h2>
+                <input
+                    id="input_name"
+                    type="text"
+                    placeholder="손님 이름을 입력하세요."
+                />
+                <button id="btn_checkin">체크인</button>
+            </div>
+            <div class="checkin_wrap">
+                <h2>체크아웃</h2>
+                <input
+                    id="input_num"
+                    type="number"
+                    placeholder="손님 순번을 입력하세요."
+                />
+                <button id="btn_checkout">체크아웃</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        const checkinList = document.getElementById("checkin_list");
+        let customersCount = checkinList.children.length;
+
+        function checkin(name) {
+            if (name.trim().length == 0) {
+                alert("이름을 입력하세요.");
+                return false;
+            }
+            customersCount++;
+            return true;
+        };
+
+        document.getElementById("btn_checkin").onclick = function () {
+            const name = document.getElementById("input_name").value;
+            if (checkin(name)) {
+                const li = document.createElement("li");
+                li.textContent = name;
+                checkinList.appendChild(li);
+            }
+        };
+
+        document.getElementById("btn_checkout").onclick = function () {
+            const num = document.getElementById("input_num").value;
+            if (num <= customersCount && num >= 1) {
+                customersCount--;
+                checkinList.children[num - 1].remove();
+            } else {
+                alert(`1부터 ${customersCount} 사이의 값을 입력해주세요.`);
+            }
+        };
+    </script>
+</html>
