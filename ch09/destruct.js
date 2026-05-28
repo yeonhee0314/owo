@@ -9,7 +9,7 @@ const langs = ["C#", "JS", "Jave", "PHP", "Rust", "C++", "Kotlin"]
 // let g = color[1];
 // let b = color[2];
 
-let [r, g, b] = color
+let [r, g, b] = color;
 [b, g, r] = [r, g, b];
 
 // 표현식에 = {기본값} 형태로 기본값 지정 가능
@@ -40,8 +40,8 @@ const user = {
     age: 17,
 };
 
-let {id, pw, name, age = 20} = user;
-console.log(age);
+// let {id, pw, name, age = 20} = user;
+// console.log(age);
 
 // Object에서도 전개 연산자 사용 가능
 let {id, ...others} = user;
